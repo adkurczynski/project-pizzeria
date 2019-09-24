@@ -79,7 +79,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
-
+      thisProduct.imageWrapper = thisProduct.element.querySelectorAll(select.menuProduct.imageWrapper);
 
     }
     initAccordion(){
@@ -124,7 +124,7 @@
       const formData = utils.serializeFormToObject(thisProduct.form);
       console.log('form Data:', formData);
 
-      let price= thisProduct.data.price;
+      let price = thisProduct.data.price;
 
       for(let paramId in thisProduct.data.params){
         console.log(paramId);
@@ -135,14 +135,9 @@
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
           if(optionSelected && !option.default){
             price += option.price;
-
+          }else if (!optionSelected && option.default)  {
+            price -= option.price;
           }
-
-
-
-
-
-
         }
       }
       console.log(price);
