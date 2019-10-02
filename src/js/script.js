@@ -148,7 +148,6 @@
         thisProduct.processOrder();
         thisProduct.addToCart();
       });
-
     }
     processOrder(){
       const thisProduct = this;
