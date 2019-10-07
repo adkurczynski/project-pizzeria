@@ -1,6 +1,7 @@
 import {Product} from './components/Product.js';
 import {Cart} from './components/Cart.js';
-import {select, settings} from './settings.js';
+import {Booking} from './components/Booking.js';
+import {select, settings, classNames} from './settings.js';
 
 const app = {
   initMenu: function(){
@@ -35,6 +36,53 @@ const app = {
       app.cart.add(event.detail.product);
     });
   },
+  appInitPages: function(){
+    const thisApp = this;
+    thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
+
+    thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
+
+    let pagesMatchingHash = [];
+
+    if(window.location.hash.length > 2){
+      const idFromHash = window.location.hash.replace('#/', '');
+
+      pagesMatchingHash = thisApp.pages.filter(function(page){
+        return page.id == idFromHash;
+      });
+    }
+    thisApp.activatePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages.id);
+    for(let link of thisApp.navLinks){
+      link.addEventListener('click', function(event){
+        event.preventDefault();
+
+        const href = link.getAttribute('href');
+        const pageId= href.replace('#','');
+        thisApp.activatePage(pageId);
+        console.log(pageId);
+      });
+
+    }
+
+  },
+
+  activatePage: function(pageId){
+    const thisApp = this;
+
+    for(let link of thisApp.navLinks){
+      link.classList.toggle(classNames.nav.active, link.getAttribute('href') == '#' + pageId);
+    }
+    for(let page of thisApp.pages){
+      page.classList.toggle(classNames.pages.active, page.getAttribute('id') == pageId);
+    }
+    window.location.hash = '#/' + pageId;
+  },
+
+  initBooking : function(){
+    const thisApp = this;
+    const widgetContainer = document.querySelector(select.containerOf.booking);
+    thisApp.booking = new Booking (widgetContainer);
+  },
   init: function(){
     const thisApp = this;
     console.log('*** App starting ***');
@@ -42,8 +90,10 @@ const app = {
     //console.log('classNames:', classNames);
     //console.log('settings:', settings);
     //console.log('templates:', templates);
+    thisApp.appInitPages();
     thisApp.initData();
     thisApp.initCart();
+    thisApp.initBooking();
   },
 };
 app.init();
