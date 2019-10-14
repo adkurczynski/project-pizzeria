@@ -55,7 +55,7 @@ export class Cart{
       subtotalPrice: thisCart.subtotalPrice,
       totalPrice: thisCart.totalPrice,
       phone: thisCart.dom.phone,
-      deliveryFee: thisCart.dom.deliveryfee,
+      deliveryFee: thisCart.dom.deliveryfee
     };
 
     for(let product of thisCart.products){
@@ -69,6 +69,7 @@ export class Cart{
       },
       body: JSON.stringify(payload),
     };
+    console.log(JSON.stringify(payload));
     fetch(url, options)
       .then(function(response){
         return response.json();

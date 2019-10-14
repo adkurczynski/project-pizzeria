@@ -41,7 +41,7 @@ const app = {
     thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
 
     thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
-    
+
     let pagesMatchingHash = [];
 
     if(window.location.hash.length > 2){
@@ -59,7 +59,7 @@ const app = {
         const href = link.getAttribute('href');
         const pageId= href.replace('#','');
         thisApp.activatePage(pageId);
-        console.log(pageId);
+        //console.log(pageId);
       });
 
     }
