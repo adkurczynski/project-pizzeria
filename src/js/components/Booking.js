@@ -1,4 +1,4 @@
-import {select, templates, settings, classNames} from '../settings.js';
+import {select, templates, settings} from '../settings.js';
 import {AmountWidget} from './AmountWidget.js';
 import {DatePicker} from './DatePicker.js';
 import {HourPicker} from './HourPicker.js';
@@ -118,13 +118,10 @@ export class Booking{
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
 
     for(let table of thisBooking.dom.tables){
-      console.log(table.getAttribute(settings.booking.tableIdAttribute));
-      console.log(thisBooking.booked[thisBooking.date][thisBooking.hour]);
-      console.log(thisBooking.booked[thisBooking.date][thisBooking.hour].includes(table.getAttribute(settings.booking.tableIdAttribute)));
-      if(thisBooking.booked[thisBooking.date] && thisBooking.booked[thisBooking.date][thisBooking.hour] && thisBooking.booked[thisBooking.date][thisBooking.hour].indexOf(table.getAttribute(settings.booking.tableIdAttribute)) ){
-        table.classList.add(classNames.booking.tableBooked);
-      }else{
-        table.classList.remove(classNames.booking.tableBooked);
+      if(thisBooking.booked[thisBooking.date] && thisBooking.booked[thisBooking.date][thisBooking.hour]){
+        console.log(table.getAttribute(settings.booking.tableIdAttribute));
+        console.log(thisBooking.booked[thisBooking.date][thisBooking.hour]);
+        console.log(thisBooking.booked[thisBooking.date][thisBooking.hour].indexOf(table.getAttribute(settings.booking.tableIdAttribute)));
       }
     }
   }
