@@ -32,6 +32,14 @@ export class Booking{
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
     });
+    for(let table of thisBooking.dom.tables){
+      table.addEventListener('click',function(){
+        if(!table.classList.contains(classNames.booking.tableBooked)){
+          thisBooking.bookingTable(table);
+        }else console.log('Stolik zajety!');
+      });
+
+    }
   }
   getData(){
     const thisBooking = this;
@@ -125,6 +133,48 @@ export class Booking{
       }
     }
   }
+  bookingTable(table){
 
+    const thisBooking = this;
+    console.log(table);
+    thisBooking.bookload = {};
+    table.classList.add(classNames.booking.tableBooked);
+    thisBooking.date = thisBooking.datePicker.value;
+    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
+    if(thisBooking.date != thisBooking.datePicker.value && thisBooking.hour != utils.hourToNumber(thisBooking.hourPicker.value)){
+      table.classList.remove(classNames.booking.tableBooked);
+    }
+    thisBooking.bookload.date = thisBooking.date;
+    thisBooking.bookload.hour = utils.numberToHour(thisBooking.hour);
+    thisBooking.bookload.table = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
+    thisBooking.bookload.repeat = 'false';
+    thisBooking.bookload.duration = thisBooking.hoursAmount.value;
+    thisBooking.bookload.ppl = thisBooking.peopleAmount.value;
+    thisBooking.bookload.starters = ['bread', 'lemonwater'];
 
+    thisBooking.dom.wrapper.addEventListener('submit', function(event){
+      event.preventDefault();
+      thisBooking.sendBooking();
+    });
+
+  }
+  sendBooking(){
+    const thisBooking = this;
+    const url = settings.db.url + '/' + settings.db.booking;
+    const bookload =  {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(thisBooking.bookload),
+    };
+    console.log(JSON.stringify(thisBooking.bookload));
+    fetch(url, bookload)
+      .then(function(response){
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+      });
+
+  }
 }
