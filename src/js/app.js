@@ -1,12 +1,14 @@
 import {Product} from './components/Product.js';
 import {Cart} from './components/Cart.js';
 import {Booking} from './components/Booking.js';
+import {HomePage} from './components/Home.js';
 import {select, settings, classNames} from './settings.js';
 
 const app = {
   initMenu: function(){
     const thisApp = this;
     //console.log('thisApp.data', thisApp.data);
+    console.log(thisApp.data.products);
     for(let productData in thisApp.data.products){
       new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
     }
@@ -42,6 +44,8 @@ const app = {
 
     thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
 
+    thisApp.activatePage('home');
+
     let pagesMatchingHash = [];
 
     if(window.location.hash.length > 2){
@@ -51,6 +55,7 @@ const app = {
         return page.id == idFromHash;
       });
     }
+
     thisApp.activatePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages.id);
     for(let link of thisApp.navLinks){
       link.addEventListener('click', function(event){
@@ -59,9 +64,8 @@ const app = {
         const href = link.getAttribute('href');
         const pageId= href.replace('#','');
         thisApp.activatePage(pageId);
-        //console.log(pageId);
+        console.log(pageId);
       });
-
     }
 
   },
@@ -77,11 +81,27 @@ const app = {
     }
     window.location.hash = '#/' + pageId;
   },
-
+  initHome : function(){
+    const thisApp = this;
+    const homePageContainer = document.querySelector(select.containerOf.home);
+    thisApp.homePage = new HomePage(homePageContainer);
+    thisApp.homeLinks = Array.from(document.querySelectorAll('.two-image-box a'));
+    console.log(thisApp.homeLinks);
+    for(let link of thisApp.homeLinks){
+      link.addEventListener('click', function(event){
+        event.preventDefault();
+        const href = link.getAttribute('href');
+        const pageId = href.replace('#','');
+        thisApp.activatePage(pageId);
+      });
+      
+    }
+  },
   initBooking : function(){
     const thisApp = this;
     const widgetContainer = document.querySelector(select.containerOf.booking);
     thisApp.booking = new Booking (widgetContainer);
+
   },
   init: function(){
     const thisApp = this;
@@ -91,9 +111,12 @@ const app = {
     //console.log('settings:', settings);
     //console.log('templates:', templates);
     thisApp.appInitPages();
+    thisApp.initHome();
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
+
+
   },
 };
 app.init();

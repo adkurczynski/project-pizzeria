@@ -62,6 +62,9 @@
   </header>
 
   <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container "></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -69,6 +72,107 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
+
+  <script id="template-home-page" type="text/x-handlebars-template">
+    <div class="home-widget">
+      <div class="interactive-menu">
+        <div class="two-image-box">
+          <a href="#order">
+            <h2>ORDER ONLINE</h2>
+            <h3>Delicious food delivered to your door</h3>
+            <img src="images/home/pizza-1.jpg" >
+          </a>
+          <a href="#booking">
+            <h2>BOOK A TABLE</h2>
+            <h3>Eat in a comfortable place</h3>
+            <img src="images/home/pizza-2.jpg">
+          </a>
+        </div>
+        <div class="opening-hours">
+            <h1>OPENING HOURS:<h1>
+            <h3>MON-SUN, 12PM-11PM</h3>
+        </div>
+      </div>
+      <div class="carousel-wrapper">
+        <div class="carousel-img-wrapper">
+          <img src="images/home//pizza-3.jpg">
+        </div>
+        <div class="carousel">
+          <ul id="carousel-track" class="carousel-track">
+            <li class="first-opinion opinion">
+              <h2>Lorem ipsum</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <p>
+            </li>
+            <li class="second-opinion opinion">
+              <h2>Nulla vel</h2>
+              <p>
+                Cras dignissim faucibus ex sed finibus.
+                Vestibulum dictum scelerisque magna, nec molestie magna lacinia at. Maecenas non congue elit.
+                Donec accumsan mattis odio vel euismod.
+              </p>
+            </li>
+            <li class="third-opinion opinion">
+              <h2>Pellentesque nisl</h2>
+              <p>
+                  Proin semper molestie blandit. Maecenas ac dui luctus, ornare dui vel, aliquet dolor. Vestibulum sed consequat ante.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="gallery">
+        <div class="first-gallery-row rows">
+          <div class="image-wrapper">
+            <img src="images/home/pizza-4.jpg">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-code-branch"></i>
+            <div class="overlay">
+            </div>
+          </div>
+          <div class="image-wrapper">
+            <img src="images/home/pizza-5.jpg">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-code-branch"></i>
+            <div class="overlay">
+            </div>
+          </div>
+          <div class="image-wrapper">
+            <img src="images/home/pizza-6.jpg">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-code-branch"></i>
+            <div class="overlay">
+            </div>
+          </div>
+        </div>
+        <div class="second-gallery-row rows">
+          <div class="image-wrapper">
+            <img src="images/home/pizza-7.jpg">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-code-branch"></i>
+            <div class="overlay">
+            </div>
+          </div>
+          <div class="image-wrapper">
+            <img src="images/home/pizza-8.jpg">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-code-branch"></i>
+            <div class="overlay">
+            </div>
+          </div>
+          <div class="image-wrapper">
+            <img src="images/home/pizza-9.jpg">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-code-branch"></i>
+            <div class="overlay">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
 
   <script id="template-booking-widget" type="text/x-handlebars-template">
     <div class="booking-widget">

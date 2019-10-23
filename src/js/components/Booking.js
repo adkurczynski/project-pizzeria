@@ -98,8 +98,8 @@ export class Booking{
 
     }
     thisBooking.updateDOM();
-    const bookingJSON = JSON.stringify(thisBooking.booked, null, '  ');
-    console.log(bookingJSON);
+    //const bookingJSON = JSON.stringify(thisBooking.booked, null, '  ');
+    //console.log(bookingJSON);
   }
   makeBooked(date, hour, table, duration){
     const thisBooking = this;
