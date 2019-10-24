@@ -1,13 +1,19 @@
 @keyframes animation-order {
-	0% {top: 45px;}
-	3% {top: 20px;}
-	100% {top: 20px;}
+  0% {top: 45px;}
+
+  3% {top: 20px;}
+
+  100% {top: 20px;}
 }
+
 @keyframes animation-subtitle {
-	0% {top: 100px;}
-	3% {top: 65px;}
-	100% {top: 65px;}
+  0% {top: 100px;}
+
+  3% {top: 65px;}
+
+  100% {top: 65px;}
 }
+
 .interactive-menu {
   margin-bottom: 200px;
 
@@ -15,17 +21,18 @@
     display: flex;
     flex-direction: row;
 
-		a:hover {
-			h2 {
-				animation-name: animation-order;
-				animation-duration: 10s;
-			}
-			h3 {
-				visibility:visible;
-				animation-name: animation-subtitle;
-				animation-duration: 10s;
-			}
-		}
+    a:hover {
+      h2 {
+        animation-name: animation-order;
+        animation-duration: 10s;
+      }
+
+      h3 {
+        visibility: visible;
+        animation-name: animation-subtitle;
+        animation-duration: 10s;
+      }
+    }
 
     a {
       flex: 0 0 49%;
@@ -42,13 +49,13 @@
 
       }
 
-			h3 {
-				position: absolute;
-				z-index: 1;
-				color: #fff;
-				bottom: 10px;
-				visibility: hidden;
-			}
+      h3 {
+        position: absolute;
+        z-index: 1;
+        color: #fff;
+        bottom: 10px;
+        visibility: hidden;
+      }
 
       img {
         object-fit: cover;
@@ -63,27 +70,29 @@
   }
 
   .opening-hours {
-		position: absolute;
+    position: absolute;
     display: flex;
-		width: 598px;
+    width: 598px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: $color-main;
     border-radius: 8px;
-		margin: 3px;
+    margin: 3px;
 
     h1, h3 {
       color: #fff;
     }
-		h1 {
-			position: relative;
-			top: 30px;
-		}
-		h3 {
-			position: relative;
-			bottom: 30px;
-		}
+
+    h1 {
+      position: relative;
+      top: 30px;
+    }
+
+    h3 {
+      position: relative;
+      bottom: 30px;
+    }
 
   }
 }
@@ -180,29 +189,30 @@
         right: 40px;
       }
 
-			.overlay {
-			  position: absolute;
-			  top: 0;
-			  bottom: 0;
-			  left: 0;
-			  right: 0;
-			  height: 180px;
-			  width: 180px;
-			  opacity: 0;
-			  transition: .5s ease;
-			  background-color: #008CBA;
-				margin: 5px;
-				border-radius: 3px;
-			}
+      .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 180px;
+        width: 180px;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: #008CBA;
+        margin: 5px;
+        border-radius: 3px;
+      }
     }
 
     .image-wrapper:hover {
       i {
         visibility: visible;
       }
-			.overlay {
-				opacity: 0.4;
-			}
+
+      .overlay {
+        opacity: 0.4;
+      }
     }
   }
 }
