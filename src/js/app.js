@@ -4,6 +4,7 @@ import {Booking} from './components/Booking.js';
 import {HomePage} from './components/Home.js';
 import {select, settings, classNames} from './settings.js';
 
+
 const app = {
   initMenu: function(){
     const thisApp = this;
@@ -94,7 +95,7 @@ const app = {
         const pageId = href.replace('#','');
         thisApp.activatePage(pageId);
       });
-      
+
     }
   },
   initBooking : function(){
