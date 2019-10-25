@@ -33,17 +33,30 @@ export class Booking{
       thisBooking.updateDOM();
     });
     for(let table of thisBooking.dom.tables){
+
       table.addEventListener('click',function(){
         if(!table.classList.contains(classNames.booking.tableBooked)){
           thisBooking.markTable(table);
         }else console.log('Stolik zajety!');
       });
-
-      thisBooking.dom.wrapper.addEventListener('submit', function(event){
-        event.preventDefault();
-        thisBooking.getBookingData();
-      });
+      
     }
+    thisBooking.dom.datePicker.addEventListener('updated',function(){
+      for(let table of thisBooking.dom.tables){
+        table.classList.remove(classNames.booking.tableBookedNow);
+      }
+    });
+    thisBooking.dom.hourPicker.addEventListener('updated',function(){
+      for(let table of thisBooking.dom.tables){
+        table.classList.remove(classNames.booking.tableBookedNow);
+      }
+    });
+
+    thisBooking.dom.wrapper.addEventListener('submit', function(event){
+      event.preventDefault();
+      thisBooking.getBookingData();
+    });
+
   }
   getData(){
     const thisBooking = this;
@@ -147,14 +160,9 @@ export class Booking{
   }
 
   markTable(table){
-    const thisBooking = this;
     table.classList.toggle(classNames.booking.tableBookedNow);
-    thisBooking.date = thisBooking.datePicker.value;
-    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
-    if(thisBooking.date != thisBooking.datePicker.value && thisBooking.hour != utils.hourToNumber(thisBooking.hourPicker.value)){
-      table.classList.remove(classNames.booking.tableBookedNow);
-    }
   }
+
   getBookingData(){
     const thisBooking = this;
     const tab = [];
