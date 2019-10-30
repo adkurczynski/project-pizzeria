@@ -26,7 +26,7 @@ utils.serializeFormToObject = function(form){
               output[field.name].push(option.value);
             }
           }
-        } else if ((field.type != 'checkbox' && field.type != 'radio') || field.checked) {
+        } else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
           utils.createPropIfUndefined(output, field.name);
           output[field.name].push(field.value);
         }
